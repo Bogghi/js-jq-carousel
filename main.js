@@ -17,6 +17,34 @@
 // Se volete potete partire dal layout base visto in classe
 // https://bitbucket.org/booleancareers/lc-ex-slider-layout/downloads/
 
+var activeImgTmp = $(".images .first");
+var activeIndTmp = $(".nav .first");
+
+for(var i = 1; i <= 4; i++){
+    
+    switch(i){
+        case 1:
+            activeImgTmp.addClass("one");
+            activeIndTmp.addClass("one");
+            break;
+        case 2: 
+            activeImgTmp.addClass("two");
+            activeIndTmp.addClass("two");
+            break;
+        case 3: 
+            activeImgTmp.addClass("three");
+            activeIndTmp.addClass("three");
+            break;
+        case 4: 
+            activeImgTmp.addClass("four");
+            activeIndTmp.addClass("four");
+            break;
+    }
+
+    activeIndTmp = activeIndTmp.next();
+    activeImgTmp = activeImgTmp.next();
+}
+
 $(document).ready(function(){
     $(".next").click(function() { changeImmage("next") });
     $(".prev").click(function() { changeImmage("prev") });
@@ -52,4 +80,53 @@ $(document).ready(function(){
             }
         }
     }
+
+    var firstIndex = $(".nav i.one");
+    var secondIndex = $(".nav i.two");
+    var threeIndex = $(".nav i.three");
+    var fourIndex = $(".nav i.four");
+
+    firstIndex.click(function() {
+        changePositionOnClick(1); 
+    });
+    secondIndex.click(function() {
+        changePositionOnClick(2); 
+    });
+    threeIndex.click(function() {
+        changePositionOnClick(3); 
+    });
+    fourIndex.click(function() {
+        changePositionOnClick(4); 
+    });
+    
+    function changePositionOnClick(pos){
+
+        switch(pos){
+            case 1: 
+                $(".images img.active").removeClass("active");
+                $(".images img.one").addClass("active");
+                $(".nav i.active").removeClass("active");
+                $(".nav i.one").addClass("active");
+                break;
+            case 2: 
+                $(".images img.active").removeClass("active");
+                $(".images img.two").addClass("active");
+                $(".nav i.active").removeClass("active");
+                $(".nav i.two").addClass("active");
+                break;
+            case 3: 
+                $(".images img.active").removeClass("active");
+                $(".images img.three").addClass("active");
+                $(".nav i.active").removeClass("active");
+                $(".nav i.three").addClass("active");
+                break;
+            case 4: 
+                $(".images img.active").removeClass("active");
+                $(".images img.four").addClass("active");
+                $(".nav i.active").removeClass("active");
+                $(".nav i.four").addClass("active");
+                break;
+        }
+    }
+
 });
