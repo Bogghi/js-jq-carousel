@@ -17,8 +17,26 @@
 // Se volete potete partire dal layout base visto in classe
 // https://bitbucket.org/booleancareers/lc-ex-slider-layout/downloads/
 
-var x = $(".slider-wrapper .images .active.first").removeClass("active");
+$(document).ready(function(){
+    $(".next").click(function() { changeImmage("next") });
+    $(".prev").click(function() { changeImmage("prev") });
 
-console.log(x);
-
-x.next().addClass("active");
+    function changeImmage(dir){
+        var activeImg = $(".slider-wrapper .images .active");
+        if(dir == "next"){
+            activeImg.removeClass("active");
+            if(activeImg.hasClass("last")){
+                $(".slider-wrapper .images .first").addClass("active");
+            }else{
+                activeImg.next().addClass("active");
+            }
+        }else{
+            activeImg.removeClass("active");
+            if(activeImg.hasClass("first")){
+                $(".slider-wrapper .images .last").addClass("active");
+            }else{
+                activeImg.prev().addClass("active");
+            }
+        }
+    }
+});
