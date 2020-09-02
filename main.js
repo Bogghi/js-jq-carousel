@@ -23,9 +23,9 @@ $(document).ready(function(){
 
     $(document).keydown(
         function(e){
-            if(e.keyCode == "37"){
+            if(e.keyCode == 39){
                 changeImmage("next");
-            }else if(e.keyCode == 39){
+            }else if(e.keyCode == 37){
                 changeImmage("prev");
             }
         }
@@ -33,19 +33,24 @@ $(document).ready(function(){
 
     function changeImmage(dir){
         var activeImg = $(".slider-wrapper .images .active");
+        var activeInd = $(".slider-wrapper .nav .active");
+        activeImg.removeClass("active");
+        activeInd.removeClass("active");
         if(dir == "next"){
-            activeImg.removeClass("active");
-            if(activeImg.hasClass("last")){
+            if(activeImg.hasClass("last") && activeInd.hasClass("last")){
                 $(".slider-wrapper .images .first").addClass("active");
+                $(".slider-wrapper .nav .first").addClass("active");
             }else{
                 activeImg.next().addClass("active");
+                activeInd.next().addClass("active");
             }
         }else{
-            activeImg.removeClass("active");
-            if(activeImg.hasClass("first")){
+            if(activeImg.hasClass("first") && activeInd.hasClass("first")){
                 $(".slider-wrapper .images .last").addClass("active");
+                $(".slider-wrapper .nav .last").addClass("active");
             }else{
                 activeImg.prev().addClass("active");
+                activeInd.prev().addClass("active");
             }
         }
     }
