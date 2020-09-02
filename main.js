@@ -32,10 +32,8 @@ $(document).ready(function(){
     );
 
     function changeImmage(dir){
-        var activeImg = $(".slider-wrapper .images .active");
-        var activeInd = $(".slider-wrapper .nav .active");
-        activeImg.removeClass("active");
-        activeInd.removeClass("active");
+        var activeImg = $(".slider-wrapper .images .active").removeClass("active");
+        var activeInd = $(".slider-wrapper .nav .active").removeClass("active");
         if(dir == "next"){
             if(activeImg.hasClass("last") && activeInd.hasClass("last")){
                 $(".slider-wrapper .images .first").addClass("active");
