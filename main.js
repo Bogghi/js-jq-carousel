@@ -21,6 +21,16 @@ $(document).ready(function(){
     $(".next").click(function() { changeImmage("next") });
     $(".prev").click(function() { changeImmage("prev") });
 
+    $(document).keydown(
+        function(e){
+            if(e.keyCode == "37"){
+                changeImmage("next");
+            }else if(e.keyCode == 39){
+                changeImmage("prev");
+            }
+        }
+    );
+
     function changeImmage(dir){
         var activeImg = $(".slider-wrapper .images .active");
         if(dir == "next"){
